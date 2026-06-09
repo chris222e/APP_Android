@@ -23,6 +23,11 @@ import org.json.JSONObject;
 
 public class recepcion extends Fragment {
 
+    // ⚠️ CAMBIA ESTA IP: 
+    // Si usas EMULADOR: "10.0.2.2"
+    // Si usas CELULAR FÍSICO: Pon la IP de tu PC (ejemplo: "192.168.1.10")
+    private static final String IP_SERVIDOR = "192.168.56.1";
+
     private EditText etSearch, etNombre, etMarca, etDescripcion;
     private RadioGroup rgCondicion, rgTipo;
     private RadioButton rbBueno, rbRegular, rbMalo, rbElectrica, rbManual;
@@ -71,10 +76,7 @@ public class recepcion extends Fragment {
             return;
         }
 
-        // Si usas emulador: 10.0.2.2
-        // Si usas celular físico: pon la IP de tu PC (ej: 192.168.1.10)
-        String ip = "10.0.2.2"; 
-        String url = "http://" + ip + "/api_senati/buscar.php?id=" + id;
+        String url = "http://" + IP_SERVIDOR + "/api_senati/buscar.php?id=" + id;
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 response -> {
@@ -102,13 +104,13 @@ public class recepcion extends Fragment {
                     if (!isAdded()) return;
                     String message = "Error de conexión";
                     if (error.networkResponse != null) {
-                        message = "Error del servidor: " + error.networkResponse.statusCode;
+                        message = "Error " + error.networkResponse.statusCode;
                     } else if (error instanceof com.android.volley.NoConnectionError) {
-                        message = "No hay conexión. ¿Está encendido XAMPP?";
+                        message = "No se pudo conectar (XAMPP apagado o IP incorrecta)";
                     } else if (error instanceof com.android.volley.TimeoutError) {
                         message = "Tiempo de espera agotado";
                     }
-                    Toast.makeText(requireContext(), message + " (" + ip + ")", Toast.LENGTH_LONG).show();
+                    Toast.makeText(requireContext(), message + " en: " + IP_SERVIDOR, Toast.LENGTH_LONG).show();
                 }
         );
 
@@ -122,8 +124,7 @@ public class recepcion extends Fragment {
             return;
         }
 
-        String ip = "10.0.2.2";
-        String url = "http://" + ip + "/api_senati/actualizar.php";
+        String url = "http://" + IP_SERVIDOR + "/api_senati/actualizar.php";
 
         JSONObject postData = new JSONObject();
         try {
@@ -155,8 +156,13 @@ public class recepcion extends Fragment {
                 },
                 error -> {
                     if (!isAdded()) return;
-                    // Intentamos parsear el error si es un error de JSON pero la operación se hizo
-                    Toast.makeText(requireContext(), "Error al actualizar (Verifique conexión)", Toast.LENGTH_SHORT).show();
+                    String message = "Error al actualizar";
+                    if (error.networkResponse != null) {
+                        message = "Error " + error.networkResponse.statusCode;
+                    } else if (error instanceof com.android.volley.NoConnectionError) {
+                        message = "Servidor no alcanzado";
+                    }
+                    Toast.makeText(requireContext(), message + ". Revisa IP: " + IP_SERVIDOR, Toast.LENGTH_LONG).show();
                 }
         );
 
