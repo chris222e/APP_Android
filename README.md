@@ -1,44 +1,34 @@
-# 🛠️ AppSENATI - Gestión de Herramientas
+# 🛠️ Sistema de Gestión de Herramientas - SENATI
 
-![Android](https://img.shields.io/badge/Platform-Android-brightgreen.svg)
-![Java](https://img.shields.io/badge/Language-Java-orange.svg)
-![Gradle](https://img.shields.io/badge/Build-Gradle-blue.svg)
+Este es mi proyecto de aplicación móvil para el control de herramientas. La app permite registrar ingresos, buscar herramientas por ID para actualizar su estado y ver un historial completo con opción de eliminar registros directamente desde el celular.
 
-Una aplicación Android moderna diseñada para la gestión eficiente de préstamos y recepción de herramientas en **SENATI**.
+## 📌 Funcionalidades Principales
 
-## 🚀 Características
+*   **Registro (Préstamo):** Formulario para ingresar nuevas herramientas a la base de datos (Nombre, Marca, Descripción, Condición y Tipo).
+*   **Recepción:** Buscador por ID que rellena automáticamente los campos para editar o actualizar herramientas ya existentes.
+*   **Historial:** Una lista en tiempo real (RecyclerView) que muestra todo lo que hay en la base de datos.
+*   **Eliminación:** Botón directo en el historial para borrar registros que ya no se necesiten.
 
-*   **Navegación Intuitiva:** Implementación de `TabLayout` para cambiar fácilmente entre:
-    *   **Préstamo:** Registro de salida de herramientas.
-    *   **Recepción:** Gestión de entrada y actualización de estado.
-    *   **Historial:** Visualización de movimientos.
-    *   **Configuración:** Ajustes del sistema.
-*   **Conectividad en Tiempo Real:** Integración con API externa mediante **Volley** para búsqueda y actualización de herramientas.
-*   **Interfaz Moderna:** Diseño basado en Material Design con bordes redondeados y colores institucionales.
+## 🚀 Tecnologías que usé
 
-## 📱 Capturas de Pantalla
+*   **Android Studio:** Desarrollado en Java.
+*   **Volley:** Para conectar la app con el servidor PHP.
+*   **Backend:** PHP (scripts para buscar, guardar, listar y eliminar).
+*   **Base de Datos:** MySQL (XAMPP).
+*   **Interfaz:** Material Design con navegación por pestañas (TabLayout).
 
-| Recepción de Herramientas | Navegación |
-| :---: | :---: |
-| ![Recepción](https://raw.githubusercontent.com/chris222e/APP_Android/main/app/src/main/res/drawable/pcc.png) | 4 Pestañas principales |
+## ⚙️ Configuración del Servidor (XAMPP)
 
-## 🛠️ Tecnologías Utilizadas
+Para que la app funcione, los archivos PHP deben estar en la carpeta `htdocs/api_senati/`:
+1. `buscar.php`
+2. `guardar.php`
+3. `historial.php`
+4. `actualizar.php`
+5. `eliminar.php`
 
-*   **Android SDK:** Nivel 36.1 (Android 15).
-*   **Lenguaje:** Java.
-*   **Librerías:**
-    *   `Volley`: Para peticiones HTTP (JSON).
-    *   `Material Components`: Para botones, pestañas y campos de texto.
-    *   `ConstraintLayout`: Para diseños flexibles.
-
-## ⚙️ Requisitos para el Desarrollador (Backend)
-
-Para que las funciones de búsqueda y actualización operen correctamente, se requiere un servidor local (XAMPP/WAMP) con los siguientes archivos en `htdocs/api_senati/`:
-
-1.  `buscar.php`: Retorna un JSON con los datos de la herramienta por ID.
-2.  `actualizar.php`: Recibe un POST JSON para actualizar el estado de la herramienta.
-
-> **Nota:** La IP configurada por defecto es `10.0.2.2` (Emulador de Android). Si usa un dispositivo físico, actualice la IP en `recepcion.java`.
+> **Nota Importante:** La base de datos se llama `constructora` y la tabla principal es `herramientas`. No olvides cambiar la IP en el código de Java (`IP_SERVIDOR`) por la que te salga en el `ipconfig` de tu PC.
 
 ---
-Desarrollado para el proyecto de gestión de herramientas de **SENATI**.
+**Curso:** Desarrollo de Aplicaciones Móviles  
+**Institución:** SENATI  
+**2024**
