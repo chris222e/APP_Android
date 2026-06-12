@@ -24,9 +24,9 @@ Para que la app funcione, los archivos PHP (que están en la carpeta **api_php**
 4.  `actualizar.php`
 5.  `eliminar.php`
 
-**Nota Importante:** La base de datos se llama **constructora** y la tabla principal es **herramientas**. No olvides cambiar la IP en el código de Java (`IP_SERVIDOR`) por la que te salga en el `ipconfig` de tu PC.
+**Nota Importante:** La base de datos se llama **constructora** 
 
 ---
-**Curso:** Desarrollo de Aplicaciones Móviles  
+**Autor:** Christian Espinoza 🧑🏽‍💻 
 **Institución:** SENATI  
-**2024**
+
