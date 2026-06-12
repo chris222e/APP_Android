@@ -26,7 +26,7 @@ public class recepcion extends Fragment {
     // ⚠️ CAMBIA ESTA IP: 
     // Si usas EMULADOR: "10.0.2.2"
     // Si usas CELULAR FÍSICO: Pon la IP de tu PC (ejemplo: "192.168.1.10")
-    private static final String IP_SERVIDOR = "192.168.56.1";
+    private static final String IP_SERVIDOR = "192.168.101.43";
 
     private EditText etSearch, etNombre, etMarca, etDescripcion;
     private RadioGroup rgCondicion, rgTipo;

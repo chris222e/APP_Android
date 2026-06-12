@@ -26,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Historial"));
         tabLayout.addTab(tabLayout.newTab().setText("Configuración"));
 
-        // 🔥 CARGAR PRIMER FRAGMENT (REPCIÓN COMO EN LA IMAGEN)
-        cargarFragmento(new recepcion());
-        TabLayout.Tab tab = tabLayout.getTabAt(1);
+        // 🔥 CARGAR PRIMER FRAGMENT
+        cargarFragmento(new prestamo());
+        TabLayout.Tab tab = tabLayout.getTabAt(0);
         if (tab != null) tab.select();
 
         // 🔥 EVENTO DE CAMBIO
